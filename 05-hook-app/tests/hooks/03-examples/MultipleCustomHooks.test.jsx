@@ -8,6 +8,6 @@ describe("Tests in <MultipleCustomHooks />", () => {
     expect(screen.getByText("Information Pokemon")).toBeTruthy();
 
     const nextButton = screen.getByRole("button", { name: "Next" });
-    expect(nextButton.disabled).toBeTruthy();
+    expect(nextButton.disabled).toBeFalsy();
   });
 });
