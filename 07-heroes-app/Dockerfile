@@ -10,6 +10,9 @@ COPY package*.json ./
 # Instalar dependencias
 RUN npm install
 
+# Copiar el resto del código
+COPY . .
+
 # Exponer el puerto 5173 (puerto por defecto de Vite dev)
 EXPOSE 5173
 
