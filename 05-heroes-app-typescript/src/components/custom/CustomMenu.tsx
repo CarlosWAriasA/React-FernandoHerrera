@@ -13,34 +13,32 @@ export const CustomMenu = () => {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <NavigationMenu>
+    <NavigationMenu className="py-5">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link to="/">
-            <NavigationMenuLink
-              className={cn(
-                navigationMenuTriggerStyle(),
-                isActive("/") && "bg-slate-200",
-                "rounded-md p-2"
-              )}
-            >
-              Home
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuLink
+            asChild
+            className={cn(
+              navigationMenuTriggerStyle(),
+              isActive("/") && "bg-slate-200",
+              "rounded-md p-2"
+            )}
+          >
+            <Link to="/">Home</Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link to="/search">
-            <NavigationMenuLink
-              className={cn(
-                navigationMenuTriggerStyle(),
-                isActive("/search") && "bg-slate-200",
-                "rounded-md p-2"
-              )}
-            >
-              Search Superheroes
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuLink
+            asChild
+            className={cn(
+              navigationMenuTriggerStyle(),
+              isActive("/search") && "bg-slate-200",
+              "rounded-md p-2"
+            )}
+          >
+            <Link to="/search">Search Superheroes</Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
