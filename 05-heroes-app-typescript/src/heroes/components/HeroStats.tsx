@@ -1,11 +1,18 @@
 import { Users, Heart, Zap, Trophy } from "lucide-react";
+import { use } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { HeroStatCard } from "./HeroStatCard";
 import { useHeroSummary } from "../hooks";
+import { FavoriteHeroContext } from "../context/FavoriteHeroContext";
 
 export const HeroStats = () => {
   const { data: summaryResponse } = useHeroSummary();
+  const { favoriteCount } = use(FavoriteHeroContext);
+
+  if (!summaryResponse) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -28,8 +35,11 @@ export const HeroStats = () => {
         title="Favorites"
         icon={<Heart className="h-4 w-4 text-muted-foreground" />}
       >
-        <div className="text-2xl font-bold text-red-600">3</div>
-        <p className="text-xs text-muted-foreground">18.8% of total</p>
+        <div className="text-2xl font-bold text-red-600">{favoriteCount}</div>
+        <p className="text-xs text-muted-foreground">
+          {((favoriteCount / summaryResponse?.totalHeroes) * 100).toFixed(2)}%
+          of total
+        </p>
       </HeroStatCard>
 
       <HeroStatCard
@@ -37,10 +47,10 @@ export const HeroStats = () => {
         icon={<Zap className="h-4 w-4 text-muted-foreground" />}
       >
         <div className="text-lg font-bold">
-          {summaryResponse?.strongestHero.alias}
+          {summaryResponse?.strongestHero?.alias}
         </div>
         <p className="text-xs text-muted-foreground">
-          Strength: {summaryResponse?.strongestHero.strength}/10
+          Strength: {summaryResponse?.strongestHero?.strength}/10
         </p>
       </HeroStatCard>
 
@@ -49,10 +59,10 @@ export const HeroStats = () => {
         icon={<Trophy className="h-4 w-4 text-muted-foreground" />}
       >
         <div className="text-lg font-bold">
-          {summaryResponse?.smartestHero.alias}
+          {summaryResponse?.smartestHero?.alias}
         </div>
         <p className="text-xs text-muted-foreground">
-          Intelligence: {summaryResponse?.smartestHero.intelligence}/10
+          Intelligence: {summaryResponse?.smartestHero?.intelligence}/10
         </p>
       </HeroStatCard>
     </div>
