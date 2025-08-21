@@ -122,7 +122,7 @@ export const SearchControls = () => {
                   defaultValue={[selectedStrength]}
                   max={10}
                   step={1}
-                  onValueChange={(e) => {
+                  onValueChange={(e: number[]) => {
                     setSearchParams((prev) => {
                       prev.set("strength", e[0].toString());
                       return prev;
