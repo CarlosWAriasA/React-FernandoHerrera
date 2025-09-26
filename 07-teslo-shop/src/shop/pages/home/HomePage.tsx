@@ -6,7 +6,7 @@ import { ProductsGrid } from "@/shop/components/ProductsGrid";
 export const HomePage = () => {
   return (
     <div>
-      <CustomJumbotron title="Header" />
+      <CustomJumbotron title="Todos los productos" />
       <ProductsGrid products={products} />
       <CustomPagination totalPages={7} />
     </div>
