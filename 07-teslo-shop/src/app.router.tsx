@@ -44,7 +44,7 @@ export const appRouter = createBrowserRouter([
     children: [
       { index: true, element: <DashboardPage /> },
       { path: "products", element: <AdminProductsPage /> },
-      { path: "product/:id", element: <AdminProductPage /> },
+      { path: "products/:id", element: <AdminProductPage /> },
     ],
   },
 
